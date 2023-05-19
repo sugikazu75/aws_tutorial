@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <form method="POST", action="/append">
+            Add ToDo Item: <input type="text" name="message">
+            <input type="submit" value="Add">
+        </form>
+        
+        <form method="POST", action="/delete">
+            Remove ToDo Item: <input type="text" name="message">
+            <input type="submit" value="Remove">
+        </form>
+
+        <h3>ToDo List</h3>
+
+        <form method="POST", action="/update">
+            <ul>
+                {% for item in todo_list %}
+                    <input type="checkbox" name="todo_checkbox" value="{{ item }}" {% if item in checked_list %}checked{% endif %}>
+                    {{ item }} <br>
+                {% endfor %}
+            </ul>
+            <button type="submit">update</button>
+        </form>
+
+        <a href="/reset">Delete All ToDo Items</a>
+    </body>
+</html>
